@@ -1,13 +1,18 @@
 package ync.pyb.entity;
 
 import lombok.*;
+import org.hibernate.loader.collection.OneToManyJoinWalker;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@ToString
 public class Detail {
 	
 	@Id
@@ -23,8 +28,5 @@ public class Detail {
 	
 	@Column(columnDefinition = "TEXT", nullable = false)
     private String detailNotice;
-	
-	@ManyToOne
-	@JoinColumn(name = "productId")
-	private Product product;
+
 }
