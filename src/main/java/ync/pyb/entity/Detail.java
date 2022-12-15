@@ -1,11 +1,8 @@
 package ync.pyb.entity;
 
 import lombok.*;
-import org.hibernate.loader.collection.OneToManyJoinWalker;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Builder

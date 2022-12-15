@@ -15,11 +15,63 @@ public class ProductServiceImpl implements ProductService {
     private final ProductRepo productRepo;
 
     @Override
-    public ProductDTO get(Long productId) {
+    public ProductDTO productDetailGet(Long productId) {
         Optional<Product> result = productRepo.findById(productId);
-
         Product product  = result.get();
 
-        return entityToDTO(product);
+        return ProductDTO.builder()
+        .productTitle(product.getProductTitle())
+        .productId(product.getProductId())
+        .productArrival(product.getProductArrival())
+        .productDeparture(product.getProductDeparture())
+        .productCount(product.getProductCount())
+        .productCostAdultBasic(product.getProductCostAdultBasic())
+        .productCostAdultFuel(product.getProductCostAdultFuel())
+        .productCostChildBasic(product.getProductCostChildBasic())
+        .productCostChildFuel(product.getProductCostChildFuel())
+        .productCostBabyBasic(product.getProductCostBabyBasic())
+        .productCostBabyFuel(product.getProductCostBabyFuel())
+        .detail(product.getDetail()).build();
     }
+
+	@Override
+	public ProductDTO productManagerGet(Long productId) {
+        Optional<Product> result = productRepo.findById(productId);
+        Product product  = result.get();
+        
+        return ProductDTO.builder()
+        .productTitle(product.getProductTitle())
+        .productId(product.getProductId())
+        .productArrival(product.getProductArrival())
+        .productDeparture(product.getProductDeparture())
+        .productCount(product.getProductCount())
+        .productCostAdultBasic(product.getProductCostAdultBasic())
+        .productCostAdultFuel(product.getProductCostAdultFuel())
+        .productCostChildBasic(product.getProductCostChildBasic())
+        .productCostChildFuel(product.getProductCostChildFuel())
+        .productCostBabyBasic(product.getProductCostBabyBasic())
+        .productCostBabyFuel(product.getProductCostBabyFuel())
+        .manager(product.getManager()).build();
+	}
+
+	@Override
+	public ProductDTO productHotelGet(Long productId) {
+	    Optional<Product> result = productRepo.findById(productId);
+        Product product  = result.get();
+        
+        return ProductDTO.builder()
+        .productTitle(product.getProductTitle())
+        .productId(product.getProductId())
+        .productArrival(product.getProductArrival())
+        .productDeparture(product.getProductDeparture())
+        .productCount(product.getProductCount())
+        .productCostAdultBasic(product.getProductCostAdultBasic())
+        .productCostAdultFuel(product.getProductCostAdultFuel())
+        .productCostChildBasic(product.getProductCostChildBasic())
+        .productCostChildFuel(product.getProductCostChildFuel())
+        .productCostBabyBasic(product.getProductCostBabyBasic())
+        .productCostBabyFuel(product.getProductCostBabyFuel())
+        .hotel(product.getHotel()).build();
+	}
+
 }

@@ -5,19 +5,9 @@ import ync.pyb.entity.Product;
 
 public interface ProductService {
 
-    ProductDTO get(Long productId);
+    ProductDTO productDetailGet(Long productId);
 
-
-    default ProductDTO entityToDTO(Product product){
-
-        ProductDTO productDTO = ProductDTO.builder()
-                .productTitle(product.getProductTitle())
-                .productId(product.getProductId())
-                .productArrival(product.getProductArrival())
-                .productDeparture(product.getProductDeparture())
-                .productCount(product.getProductCount())
-                .detail(product.getDetail()).build();
-        return productDTO;
-
-    }
+    ProductDTO productManagerGet(Long productId);
+    
+    ProductDTO productHotelGet(Long productId);
 }

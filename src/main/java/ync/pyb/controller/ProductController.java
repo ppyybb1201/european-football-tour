@@ -12,13 +12,24 @@ import ync.pyb.service.ProductService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/product/*")
+@RequestMapping("/product/*")
 public class ProductController {
 
     private final ProductService productService;
 
-    @GetMapping("/{productId}")
-    public ResponseEntity<ProductDTO> get(@PathVariable("productId") Long productId){
-        return new ResponseEntity<>(productService.get(productId), HttpStatus.OK);
+    @GetMapping("detail/{productId}")
+    public ResponseEntity<ProductDTO> getDetail(@PathVariable("productId") Long productId){
+        return new ResponseEntity<>(productService.productDetailGet(productId), HttpStatus.OK);
     }
+    
+    @GetMapping("manager/{productId}")
+    public ResponseEntity<ProductDTO> getManager(@PathVariable("productId") Long productId){
+        return new ResponseEntity<>(productService.productManagerGet(productId), HttpStatus.OK);
+    }
+    
+    @GetMapping("hotel/{productId}")
+    public ResponseEntity<ProductDTO> getHotel(@PathVariable("productId") Long productId){
+        return new ResponseEntity<>(productService.productHotelGet(productId), HttpStatus.OK);
+    }
+    
 }

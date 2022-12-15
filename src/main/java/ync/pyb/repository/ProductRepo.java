@@ -1,15 +1,12 @@
 package ync.pyb.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import ync.pyb.dto.ProductDTO;
 import ync.pyb.entity.Product;
 
-@Repository
 public interface ProductRepo extends JpaRepository<Product, Long>{
-
-
-
 
 }

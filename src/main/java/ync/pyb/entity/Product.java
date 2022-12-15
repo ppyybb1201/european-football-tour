@@ -11,7 +11,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @ToString
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Product {
 
 	@Id
@@ -34,25 +33,33 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "detailId")
     private Detail detail;
+    
+    @ManyToOne
+    @JoinColumn(name = "managerId")
+    private Manager manager;
+    
+    @ManyToOne
+    @JoinColumn(name = "hotelId")
+    private Hotel hotel;
 
 
-//    @Column(nullable = false)
-//    private int productCostAdultBasic;
-//
-//    @Column(nullable = false)
-//    private int productCostAdultFuel;
-//
-//    @Column(nullable = false)
-//    private int productCostChildBasic;
-//
-//    @Column(nullable = false)
-//    private int productCostChildFuel;
-//
-//    @Column(nullable = false)
-//    private int productCostBabyBasic;
-//
-//    @Column(nullable = false)
-//    private int productCostBabyFuel;
+    @Column(length = 50, nullable = false)
+    private String productCostAdultBasic;
+
+    @Column(length = 50, nullable = false)
+    private String productCostAdultFuel;
+
+    @Column(length = 50, nullable = false)
+    private String productCostChildBasic;
+
+    @Column(length = 50, nullable = false)
+    private String productCostChildFuel;
+
+    @Column(length = 50, nullable = false)
+    private String productCostBabyBasic;
+
+    @Column(length = 50, nullable = false)
+    private String productCostBabyFuel;
 
 
 
