@@ -12,7 +12,7 @@ public class ProductServiceTests {
     private ProductService productService;
 
     @Test
-    public void testGet(){
+    public void testGet() {
         ProductDTO productDTO = productService.productDetailGet(1L);
         System.out.println(productDTO);
     }

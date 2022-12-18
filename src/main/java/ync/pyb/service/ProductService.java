@@ -8,6 +8,6 @@ public interface ProductService {
     ProductDTO productDetailGet(Long productId);
 
     ProductDTO productManagerGet(Long productId);
-    
+
     ProductDTO productHotelGet(Long productId);
 }

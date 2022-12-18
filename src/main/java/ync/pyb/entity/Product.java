@@ -13,7 +13,7 @@ import javax.persistence.*;
 @ToString
 public class Product {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, columnDefinition = "INT UNSIGNED")
     private Long productId;
@@ -33,11 +33,11 @@ public class Product {
     @ManyToOne
     @JoinColumn(name = "detailId")
     private Detail detail;
-    
+
     @ManyToOne
     @JoinColumn(name = "managerId")
     private Manager manager;
-    
+
     @ManyToOne
     @JoinColumn(name = "hotelId")
     private Hotel hotel;
@@ -60,8 +60,6 @@ public class Product {
 
     @Column(length = 50, nullable = false)
     private String productCostBabyFuel;
-
-
 
 
 }

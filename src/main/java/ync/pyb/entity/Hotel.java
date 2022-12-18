@@ -22,7 +22,7 @@ import lombok.ToString;
 @ToString
 public class Hotel {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, columnDefinition = "INT UNSIGNED")
     private Long hotelId;
@@ -35,7 +35,6 @@ public class Hotel {
 
     @Column(length = 100, nullable = false)
     private String hotelDescription;
-
 
 
 }

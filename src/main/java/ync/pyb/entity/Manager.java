@@ -20,19 +20,19 @@ import lombok.ToString;
 @ToString
 public class Manager {
 
-	@Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(nullable = false, columnDefinition = "INT UNSIGNED")
     private Long managerId;
-	
+
     @Column(length = 100, nullable = false)
     private String managerName;
-    
+
     @Column(length = 50, nullable = false)
     private String managerPhone;
-    
+
     @Column(length = 100, nullable = false)
     private String managerEmail;
-    
-    
+
+
 }

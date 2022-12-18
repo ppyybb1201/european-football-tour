@@ -31,7 +31,6 @@ public class ProductDTO {
     private Detail detail;
     private Manager manager;
     private Hotel hotel;
-    
 
 
 }
