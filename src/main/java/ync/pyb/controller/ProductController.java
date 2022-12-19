@@ -12,7 +12,7 @@ import ync.pyb.service.ProductService;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/product/*")
+@RequestMapping("/api/product/*")
 public class ProductController {
 
     private final ProductService productService;

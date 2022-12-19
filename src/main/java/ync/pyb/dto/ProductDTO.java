@@ -1,7 +1,5 @@
 package ync.pyb.dto;
 
-import javax.persistence.Column;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import lombok.*;
