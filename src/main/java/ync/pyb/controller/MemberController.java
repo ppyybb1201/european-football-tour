@@ -3,17 +3,14 @@ package ync.pyb.controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.bind.annotation.*;
 
 
 import lombok.RequiredArgsConstructor;
 import ync.pyb.dto.ApiResponseDTO;
 import ync.pyb.dto.MemberDTO;
 import ync.pyb.service.MemberService;
+
 
 @RestControllerAdvice
 @RequiredArgsConstructor
@@ -28,11 +25,17 @@ public class MemberController {
 		return new ResponseEntity<>(emailIdentityAvailability, HttpStatus.OK);
 	}
 	
-	@GetMapping("/{mno}/profile")
-	@PreAuthorize("hasRole('USER')") // hasRole('USER') or hasRole('ADMIN')
+	@GetMapping("/{memberId}/profile")
+	@PreAuthorize("hasRole('USER')")
 	public ResponseEntity<MemberDTO> getMemberProfile(@PathVariable(value = "memberId") Long memberId) {
 		MemberDTO member = memberService.get(memberId);
 		return new ResponseEntity<>(member, HttpStatus.OK);
 	}
-	
+
+	@DeleteMapping("/{memberId}/remove")
+	@PreAuthorize("hasRole('USER')")
+	public String remove(@PathVariable(value = "memberId") Long memberId){
+		memberService.remove(memberId);
+		return "성공적으로 삭제되었습니다.";
+	}
 }

@@ -9,19 +9,19 @@ import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
 import ync.pyb.entity.Member;
-import ync.pyb.repository.MemberRepository;
+import ync.pyb.repository.MemberRepo;
 import ync.pyb.security.MemberPrincipal;
 
 @Service
 @RequiredArgsConstructor
 public class CustomUserDetailsServiceImpl implements UserDetailsService, CustomUserDetailsService {
 
-	private final MemberRepository memberRepository;
+	private final MemberRepo memberRepo;
 
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String memberEmail) {
-		Member member = memberRepository.findByMemberEmail(memberEmail).orElseThrow(
+		Member member = memberRepo.findByMemberEmail(memberEmail).orElseThrow(
 				() -> new UsernameNotFoundException(String.format("User not found with this email: %s", memberEmail)));
 		return MemberPrincipal.create(member);
 	}
@@ -29,7 +29,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService, CustomU
 	@Override
 	@Transactional
 	public UserDetails loadUserByMno(Long memberId) {
-		Member member = memberRepository.findByMemberId(memberId)
+		Member member = memberRepo.findByMemberId(memberId)
 				.orElseThrow(() -> new UsernameNotFoundException(String.format("User not found with id: %s", memberId)));
 		return MemberPrincipal.create(member);
 	}

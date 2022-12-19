@@ -22,6 +22,7 @@ public class MemberPrincipal implements UserDetails {
 	
 	private Long memberId;
 	private String memberEmail;
+	private String memberPhone;
 
 
 	@JsonIgnore
@@ -29,11 +30,12 @@ public class MemberPrincipal implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public MemberPrincipal(Long memberId, String memberEmail, String memberPassword,
+	public MemberPrincipal(Long memberId, String memberEmail, String memberPassword, String memberPhone,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.memberId = memberId;
 		this.memberEmail = memberEmail;
 		this.memberPassword = memberPassword;
+		this.memberPhone = memberPhone;
 		
 		if (authorities == null) {
 			this.authorities = null;
@@ -44,7 +46,7 @@ public class MemberPrincipal implements UserDetails {
 	
 	public static MemberPrincipal create(Member member) {
 		List<GrantedAuthority> authorities = member.getRoleSet().stream().map(role ->new SimpleGrantedAuthority("ROLE_" + role.name())).collect(Collectors.toList());
-		return new MemberPrincipal(member.getMemberId(), member.getMemberEmail(),member.getMemberPassword(), authorities);
+		return new MemberPrincipal(member.getMemberId(), member.getMemberEmail(),member.getMemberPassword(), member.getMemberPhone(), authorities);
 	}
 	
 	@Override

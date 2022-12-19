@@ -16,4 +16,7 @@ public class SignUpRequestDTO {
 	@NotBlank
 	private String memberPassword;
 
+	@NotBlank
+	private String memberPhone;
+
 }

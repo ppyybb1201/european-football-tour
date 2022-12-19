@@ -12,17 +12,19 @@ import org.springframework.data.repository.query.Param;
 
 import ync.pyb.entity.Member;
 
-public interface MemberRepository extends JpaRepository<Member, Long>{
+public interface MemberRepo extends JpaRepository<Member, Long>{
 	
 	
 	Boolean existsByMemberEmail(@NotBlank String memberEmail);
 	
 	
 	@EntityGraph(attributePaths = {"roleSet"}, type = EntityGraphType.LOAD)
-	@Query("select m from Member m where m.memberEmail = :memberEmail ")
+	@Query("SELECT m FROM Member m WHERE m.memberEmail = :memberEmail ")
 	Optional<Member> findByMemberEmail(@Param("memberEmail") String memberEmail);
 	
 	@EntityGraph(attributePaths = {"roleSet"}, type = EntityGraphType.LOAD)
-	@Query("select m from Member m where m.memberId = :memberId ")
+	@Query("SELECT m FROM Member m WHERE m.memberId = :memberId ")
 	Optional<Member> findByMemberId(@Param("memberId") Long memberId);
+
+
 }

@@ -1,5 +1,7 @@
 package ync.pyb.entity;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -20,6 +22,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.data.annotation.CreatedDate;
 
 @Entity
 @Builder
@@ -36,12 +39,22 @@ public class Member {
 
     @Column(nullable = false)
     @Size(max = 50)
-//	@Email
     private String memberEmail;
 
     @Column(length = 100, nullable = false)
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY) // 쓰기전용
     private String memberPassword;
+
+    @Column(length = 100, nullable = false)
+    private String memberPhone;
+
+    @Column(length = 50, nullable = false)
+    private String memberStatus;
+
+    @CreatedDate
+    private LocalDate memberCreated;
+
+
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default
