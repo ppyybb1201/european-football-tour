@@ -22,7 +22,6 @@ public class MemberDTO {
 	private Long memberId;
 	private String memberEmail;
 	private String memberPhone;
-	private String memberStatus;
-	private LocalDate memberCreated;
+	private LocalDateTime memberCreated;
 
 }

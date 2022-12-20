@@ -55,8 +55,6 @@ public class MemberServiceImpl implements MemberService {
 				.memberEmail(signupDTO.getMemberEmail())
 				.memberPassword(passwordEncoder.encode(signupDTO.getMemberPassword()))
 				.memberPhone(signupDTO.getMemberPhone())
-				.memberCreated(LocalDate.now())
-				.memberStatus("활성화")
 				.build();
 		member.addMemberRole(MemberRole.USER);
 		memberRepo.save(member);

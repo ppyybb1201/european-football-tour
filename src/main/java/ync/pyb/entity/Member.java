@@ -5,13 +5,7 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 import javax.validation.constraints.Size;
 
@@ -23,6 +17,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Builder
@@ -30,6 +25,7 @@ import org.springframework.data.annotation.CreatedDate;
 @NoArgsConstructor
 @Getter
 @ToString
+@EntityListeners(value = {AuditingEntityListener.class})
 public class Member {
 
     @Id
@@ -48,11 +44,8 @@ public class Member {
     @Column(length = 100, nullable = false)
     private String memberPhone;
 
-    @Column(length = 50, nullable = false)
-    private String memberStatus;
-
     @CreatedDate
-    private LocalDate memberCreated;
+    private LocalDateTime memberCreated;
 
 
 
