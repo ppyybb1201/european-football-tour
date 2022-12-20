@@ -2,6 +2,7 @@ package european.football.tour.entity;
 
 import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -46,7 +47,8 @@ public class Member {
     @CreatedDate
     private LocalDateTime memberCreated;
 
-
+    @OneToMany(mappedBy = "member")
+    private List<Review> review;
 
     @ElementCollection(fetch = FetchType.LAZY)
     @Builder.Default

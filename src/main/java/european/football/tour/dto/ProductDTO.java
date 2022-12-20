@@ -5,7 +5,10 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import european.football.tour.entity.Detail;
 import european.football.tour.entity.Hotel;
 import european.football.tour.entity.Manager;
+import european.football.tour.entity.Review;
 import lombok.*;
+
+import java.util.List;
 
 
 @Data
@@ -29,6 +32,7 @@ public class ProductDTO {
     private Detail detail;
     private Manager manager;
     private Hotel hotel;
+    private List<Review> review;
 
 
 }

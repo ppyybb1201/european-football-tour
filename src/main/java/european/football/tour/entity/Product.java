@@ -1,8 +1,11 @@
 package european.football.tour.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Builder
@@ -10,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Getter
 @ToString
+@Setter
 public class Product {
 
     @Id
@@ -41,6 +45,8 @@ public class Product {
     @JoinColumn(name = "hotelId")
     private Hotel hotel;
 
+    @OneToMany(mappedBy = "product", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> review;
 
     @Column(length = 50, nullable = false)
     private String productCostAdultBasic;

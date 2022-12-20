@@ -19,7 +19,8 @@ import european.football.tour.entity.Member;
 public class MemberPrincipal implements UserDetails {
 
 	private static final long serialVersionUID = -3938948583663245575L;
-	
+
+
 	private Long memberId;
 	private String memberEmail;
 	private String memberPhone;

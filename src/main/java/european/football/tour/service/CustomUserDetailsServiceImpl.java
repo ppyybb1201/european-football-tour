@@ -21,8 +21,8 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService, CustomU
 	@Override
 	@Transactional
 	public UserDetails loadUserByUsername(String memberEmail) {
-		Member member = memberRepo.findByMemberEmail(memberEmail).orElseThrow(
-				() -> new UsernameNotFoundException(String.format("User not found with this email: %s", memberEmail)));
+		Member member = memberRepo.findByMemberEmail(memberEmail);
+		new UsernameNotFoundException(String.format("User not found with this email: %s", memberEmail));
 		return MemberPrincipal.create(member);
 	}
 

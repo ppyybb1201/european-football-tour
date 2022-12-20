@@ -19,7 +19,7 @@ public interface MemberRepo extends JpaRepository<Member, Long>{
 	
 	@EntityGraph(attributePaths = {"roleSet"}, type = EntityGraphType.LOAD)
 	@Query("SELECT m FROM Member m WHERE m.memberEmail = :memberEmail ")
-	Optional<Member> findByMemberEmail(@Param("memberEmail") String memberEmail);
+	Member findByMemberEmail(@Param("memberEmail") String memberEmail);
 	
 	@EntityGraph(attributePaths = {"roleSet"}, type = EntityGraphType.LOAD)
 	@Query("SELECT m FROM Member m WHERE m.memberId = :memberId ")

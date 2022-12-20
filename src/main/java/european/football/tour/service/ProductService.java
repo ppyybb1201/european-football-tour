@@ -9,4 +9,6 @@ public interface ProductService {
     ProductDTO productManagerGet(Long productId);
 
     ProductDTO productHotelGet(Long productId);
+
+    ProductDTO productReview(Long productId);
 }
