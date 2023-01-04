@@ -45,7 +45,6 @@ public class Review {
     public void save(Product product, Member member){
         this.product = product;
         this.member = member;
-
     }
 
     public void update(String reviewContents){

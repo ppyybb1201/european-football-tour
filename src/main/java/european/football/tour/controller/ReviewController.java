@@ -23,7 +23,7 @@ public class ReviewController {
     private final MemberRepo memberRepo;
 
     @PreAuthorize("hasRole('USER')")
-    @PostMapping("{productId}/reply/register")
+    @PostMapping("{productId}/register")
     public ResponseEntity save(@RequestBody ReviewDTO reviewDTO, @PathVariable Long productId,  @CurrentMember MemberPrincipal currentMember) {
 
         return new ResponseEntity<>(reviewService.reviewSave(productId, reviewDTO, currentMember), HttpStatus.OK);
