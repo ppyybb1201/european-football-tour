@@ -50,5 +50,6 @@ public class Review {
 
     public void update(String reviewContents){
         this.reviewContents = reviewContents;
+        this.reviewUpdated = LocalDateTime.now();
     }
 }
